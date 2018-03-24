@@ -40,7 +40,7 @@ def message():
 			}
 		}
 
-		return jsonify(dataSend)
+	return jsonify(dataSend)
 	
 
 if __name__ == '__main__':
