@@ -14,7 +14,9 @@ def home():
 def keyboard():
 	
 	dataSend = {
-        "text" : "안녕하세요"
+		"message":{
+			"text": "안녕하세요"
+		}
     }
  
 	return jsonify(dataSend)
@@ -36,7 +38,7 @@ def message():
 	else:
 		dataSend = {
 			"message": {
-			"text": content
+			"text": "..."
 			}
 		}
 
