@@ -13,9 +13,8 @@ def home():
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
     return '''{
-  "message": {
-    "text": "안녕!"
-  }
+    "type" : "buttons",
+    "buttons" : ["선택 1", "선택 2", "선택 3"]
 }'''
 
 if __name__ == '__main__':
