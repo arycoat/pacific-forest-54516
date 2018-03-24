@@ -2,6 +2,14 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def home():
+    return '''{
+  "message": {
+    "text": "home"
+  }
+}'''
+
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
     return '''{
