@@ -12,10 +12,36 @@ def home():
 
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
-    return '''{
-    "type" : "buttons",
-    "buttons" : ["선택 1", "선택 2", "선택 3"]
-}'''
+	
+	dataSend = {
+        "text" : "안녕하세요"
+    }
+ 
+	return jsonify(dataSend)
+
+	
+
+@app.route('/message', methods=['GET'])
+def message():
+	dataReceive = request.get_json()
+	
+	content = dataReceive['content']
+
+	if u"안녕" in content:
+		dataSend = {
+			"message": {
+			"text": "안녕~~ 반가워 ㅎㅎ"
+			}
+		}
+	else:
+		dataSend = {
+			"message": {
+			"text": content
+			}
+		}
+
+		return jsonify(dataSend)
+	
 
 if __name__ == '__main__':
     app.run(debug=True)
