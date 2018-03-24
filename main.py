@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -21,26 +22,26 @@ def keyboard():
 
 	
 
-@app.route('/message', methods=['GET'])
+@app.route('/message', methods=['POST'])
 def message():
-	dataReceive = request.get_json()
 	
-	content = dataReceive['content']
+	dataReceive = request.get_json(force=True)
+	content = dataReceive["content"]
 
-	if u"안녕" in content:
-		dataSend = {
+	if content == u"안녕":
+		dataSend = jsonify({
 			"message": {
 			"text": "안녕~~ 반가워 ㅎㅎ"
 			}
-		}
+		})
 	else:
-		dataSend = {
-			"message": {
-			"text": "..."
-			}
-		}
-
-	return jsonify(dataSend)
+		message = {}
+		message["text"] = content
+		data = {}
+		data["message"] = message
+		dataSend = jsonify(data)
+	
+	return dataSend
 	
 
 if __name__ == '__main__':
